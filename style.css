@@ -60,6 +60,22 @@
     margin-top: 4px;
 }
 
+.horizontal_slider {
+    overflow: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* firefox */
+    -ms-overflow-style: none; /* for IE, Edge */
+}
+
+.horizontal_slider::-webkit-scrollbar {
+    display: none; /* chrome, safari, opera */
+}
+
+.slider_item {
+    margin-right: 10px;
+    background-color: yellow;
+}
+
 .bottom_nav {
     position: fixed;
     bottom: 0;
