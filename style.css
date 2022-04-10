@@ -9,8 +9,8 @@
 }
 
 #logo {
-    display: flex;
-    align-items: center;
+    /*display: flex;*/
+    /*align-items: center;*/
     margin-right: auto;
 }
 
@@ -22,14 +22,19 @@
 
 .chip_area {
     display: flex;
+    overflow: auto;
     position: sticky;
     top: 0;
     padding-top: 10px;
     padding-bottom:10px;
-    background-color: #fff;
+}
+
+.chip_area::-webkit-scrollbar {
+    display: none; /* chrome, safari, opera */
 }
 
 .chip {
+    white-space: nowrap; /* 줄넘김을 방지해서 overflow가 적용되도록 함 */
     margin-right: 6px;
     padding: 6px;
     padding-left: 8px;
@@ -44,6 +49,7 @@
 
 .content_item {
     margin-top: 12px;
+    margin-bottom: 48px;
 }
 
 #item_about {
@@ -59,6 +65,28 @@
 #item_content {
     margin-top: 4px;
 }
+
+.horizontal_list_slider {
+    overflow-x: hidden;
+}
+
+.list_slider_item_list {
+    display: flex;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.list_slider_item {
+    display: inline-block;
+    min-width: 200px;
+    margin-right: 4px;
+}
+
+.list_item {
+    background-color: yellow;
+    margin-bottom: 4px;
+}
+
 
 .horizontal_slider {
     overflow: auto;
