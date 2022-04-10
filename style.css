@@ -97,10 +97,10 @@
 
 .list_item_image {
     width: 50px;
-    padding: 4px;
-    margin-right: 4px;
-    margin-left: 4px;
+    margin: 4px;
+    margin-right: 12px;
     border-radius: 4px;
+    /*background-color: grey;*/
 }
 
 .list_item_song {
