@@ -27,6 +27,7 @@
     top: 0;
     padding-top: 10px;
     padding-bottom:10px;
+    background-color: #fff;
 }
 
 .chip_area::-webkit-scrollbar {
@@ -58,6 +59,7 @@
 }
 
 #item_name {
+    margin-bottom: 8px;
     font-weight: bold;
     font-size: 24px;
 }
@@ -68,25 +70,47 @@
 
 .horizontal_list_slider {
     overflow-x: hidden;
+    /*width: 210px;*/
 }
 
 .list_slider_item_list {
     display: flex;
     overflow: auto;
     scroll-snap-type: x mandatory;
+    /*-webkit-overflow-scrolling: touch;*/
 }
 
 .list_slider_item {
     display: inline-block;
-    min-width: 200px;
+    min-width: 400px;
     margin-right: 4px;
+    scroll-snap-align: start;
 }
 
 .list_item {
+    display: flex;
+    align-items: center;
     background-color: yellow;
     margin-bottom: 4px;
+    height: 58px;
 }
 
+.list_item_image {
+    width: 50px;
+    padding: 4px;
+    margin-right: 4px;
+    margin-left: 4px;
+    border-radius: 4px;
+}
+
+.list_item_song {
+    font-weight: bold;
+}
+
+.list_item_singer {
+    color: grey;
+    font-size: 14px;
+}
 
 .horizontal_slider {
     overflow: auto;
