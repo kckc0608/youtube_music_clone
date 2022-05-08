@@ -42,10 +42,14 @@ if ('content' in document.createElement('template')) {
 		return new_slider;
 	};
 
-	const add_item = function(slider, song, singer) {
+	const add_item = function(slider, imageSource, song, singer) {
 		// get slider item template
 		const template_slider_item = document.querySelector('#t_slider_item');
 		const item = document.importNode(template_slider_item.content, true);
+
+		if (!!imageSource) {
+			item.querySelector('.slider_item_image').setAttribute('src', imageSource);
+		}
 		if (song !== undefined) {
 			item.querySelector('.slider_item_song').textContent = song;
 		}
@@ -92,7 +96,7 @@ if ('content' in document.createElement('template')) {
 			{
 				item.querySelector('.list_item_singer').textContent = singer;
 			}
-			
+
 			slider_container.lastChild.appendChild(item);
 			list_slider.itemCount += 1;
 		};
@@ -100,6 +104,7 @@ if ('content' in document.createElement('template')) {
 		return list_slider;
 	};
 
+	// 빠른 선곡
 	const list_slider = make_list_slider();
 	for (let i = 0; i < 14; i++) {
 		list_slider.addItem("", "Re:wind", "이세계아이돌");
@@ -110,27 +115,29 @@ if ('content' in document.createElement('template')) {
 		"빠른 선곡",
 		list_slider
 	);
-	
+
 
 	// 즐겨 듣는 음악
 	let slider = make_Slider();
 	addContent("", "", "즐겨 듣는 음악", slider);
+
+	add_item(slider, "res/song/re_wind_album.jpeg", "RE : WIND", "이세계아이돌");
 	for (let i = 0; i < 8; i++) {
     	add_item(slider);
     }
-	
+
 	// 밤에 어울리는 음악
 	slider = make_Slider();
-	add_item(slider, "노래", "가수");
-	add_item(slider, "노래", "가수");
-	add_item(slider, "노래", "가수");
-	add_item(slider, "노래", "가수");
-	add_item(slider, "노래", "가수");
+	add_item(slider, "", "노래", "가수");
+	add_item(slider, "", "노래", "가수");
+	add_item(slider, "", "노래", "가수");
+	add_item(slider, "", "노래", "가수");
+	add_item(slider, "", "노래", "가수");
 	addContent("", "다시 듣기", "밤에 어울리는 음악", slider);
 
 	// 아래 아티스트를 좋아한다면
 	slider = make_Slider();
-	add_item(slider, "song", "singer");
+	add_item(slider, "", "song", "singer");
 
 	addContent(
 		"res/singer/Yorushika_Logo.jpg",
@@ -138,7 +145,7 @@ if ('content' in document.createElement('template')) {
 		"Yorushika(ヨルシカ)",
 		slider
 	);
-	
+
 	addContent(
 		"",
 		"아래 아티스트를 좋아한다면",
@@ -155,10 +162,10 @@ if ('content' in document.createElement('template')) {
 
 	// 아래 아티스트의 콘텐츠 더보기:
 	slider = make_Slider();
-	add_item(slider, "song", "kobasolo");
-	add_item(slider, "song", "kobasolo");
-	add_item(slider, "song", "kobasolo");
-	add_item(slider, "song", "kobasolo");
+	add_item(slider, "", "song", "kobasolo");
+	add_item(slider, "", "song", "kobasolo");
+	add_item(slider, "", "song", "kobasolo");
+	add_item(slider, "", "song", "kobasolo");
 	addContent("", "아래 아티스트의 콘텐츠 더보기:", "kobasolo", slider, true); // Yorushika
 }
 else

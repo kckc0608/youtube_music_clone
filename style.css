@@ -170,6 +170,16 @@
     border-radius: 5px;
 }
 
+.slider_item_song {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.slider_item_singer {
+	font-size: 14px;
+	color: grey;
+}
+
 .bottom_nav {
     position: fixed;
     bottom: 0;
