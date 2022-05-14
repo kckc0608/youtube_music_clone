@@ -97,6 +97,14 @@ if ('content' in document.createElement('template')) {
 				item.querySelector('.list_item_singer').textContent = singer;
 			}
 
+			item.querySelector('#more_button').addEventListener("click", function(){
+				const modal = document.querySelector('.modal_background');
+				modal.style.display = "block";
+				modal.addEventListener("click", function(){
+					modal.style.display = "none";
+				});
+			});
+
 			slider_container.lastChild.appendChild(item);
 			list_slider.itemCount += 1;
 		};
