@@ -97,11 +97,16 @@ if ('content' in document.createElement('template')) {
 				item.querySelector('.list_item_singer').textContent = singer;
 			}
 
+			// click event set : modal open
 			item.querySelector('#more_button').addEventListener("click", function(){
 				const modal = document.querySelector('.modal_background');
 				modal.style.display = "block";
+				//document.querySelector('.content_area').style.overflow = "hidden";
+				document.querySelector('body').style.overflow = "hidden";
 				modal.addEventListener("click", function(){
 					modal.style.display = "none";
+					//document.querySelector('.content_area').style.overflow = "auto";
+					document.querySelector('body').style.overflow = "auto";
 				});
 			});
 
@@ -111,6 +116,12 @@ if ('content' in document.createElement('template')) {
 
 		return list_slider;
 	};
+
+	const API_ADDRESS = 'http://api.everdu.ga/project/ym_music/';
+
+	// API 서버와 통신
+	fetch(API_ADDRESS).then(res => res.text())
+		.then(text => console.log(text));
 
 	// 빠른 선곡
 	const list_slider = make_list_slider();
