@@ -26,7 +26,9 @@ app.get('/', function(req, res) {
 	//res.send('hello world!');
 	//res.sendFile(__dirname + '/index.html');
 
-	db.query('show databases', (err, result) => {
+	const fast_start_query = 'select * from fast_start';
+
+	db.query(fast_start_query, (err, result) => {
 		console.log(err);
 		console.log(result);
 	});
