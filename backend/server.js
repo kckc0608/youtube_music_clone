@@ -36,7 +36,7 @@ app.get('/', function(req, res) {
 	db.query(fast_start_query, (err, result) => {
 		console.log(err);
 		console.log(result);
-		if (err === null) {
+		if (!!result) {
 			resultObj.fastStartList.push(makeSongObj(result[0].song, result[0].singer, result[0].image_dir));
 		}
 	});
