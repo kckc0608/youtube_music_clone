@@ -8,15 +8,16 @@ app.listen(port, function(){
 
 // GET == URL
 app.get('/', function(req, res) {
+	res.header("Access-Control-Allow-Origin", "*");
 	res.send({
 		fastStartList: [{
 				song: "Re:Wind",
 				singer: "이세계 아이돌",
-				imageDir: "song/re-wind.png"
+				imageDir: "res/song/re_wind_album.jpeg"
 			}, {
 				song: "Re:Wind",
 				singer: "이세계 아이돌",
-				imageDir: "song/re-wind.png"
+				imageDir: "res/song/re_wind_album.jpeg"
 			}
 		]
 	});

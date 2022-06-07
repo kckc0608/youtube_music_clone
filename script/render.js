@@ -117,24 +117,34 @@ if ('content' in document.createElement('template')) {
 		return list_slider;
 	};
 
+
 	const API_ADDRESS = 'http://api.everdu.ga/project/ym_music/';
 
 	// API 서버와 통신
-	fetch(API_ADDRESS).then(res => res.text())
-		.then(text => console.log(text));
+	fetch(API_ADDRESS).then(res => res.json())
+		.then((data) => {
+			const MainPageData = data;
+			
+			// 빠른 선곡
+			const list_slider = make_list_slider();
+			const fastSelectList = MainPageData.fastStartList;
+			
+			for (let i = 0; i < fastSelectList.length; i++) {
+				const item = fastSelectList[i];
+				list_slider.addItem(item.imageDir, item.song, item.singer);
+			}
+			addContent(
+				"",
+				"이 노래로 뮤직 스테이션 시작하기",
+				"빠른 선곡",
+				list_slider
+			);
 
-	// 빠른 선곡
-	const list_slider = make_list_slider();
-	for (let i = 0; i < 14; i++) {
-		list_slider.addItem("", "Re:wind", "이세계아이돌");
-	}
-	addContent(
-		"",
-		"이 노래로 뮤직 스테이션 시작하기",
-		"빠른 선곡",
-		list_slider
-	);
+			// 나머지 아직 안그린거 렌더링
+			RENDER();
+		});
 
+	const RENDER = function() {
 
 	// 즐겨 듣는 음악
 	let slider = make_Slider();
@@ -186,6 +196,8 @@ if ('content' in document.createElement('template')) {
 	add_item(slider, "", "song", "kobasolo");
 	add_item(slider, "", "song", "kobasolo");
 	addContent("", "아래 아티스트의 콘텐츠 더보기:", "kobasolo", slider, true); // Yorushika
+
+	}
 }
 else
 {
