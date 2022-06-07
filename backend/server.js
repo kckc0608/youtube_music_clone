@@ -27,6 +27,7 @@ app.get('/', function(req, res) {
 	//res.sendFile(__dirname + '/index.html');
 
 	db.query('show databases', (err, result) => {
+		console.log(err);
 		console.log(result);
 	});
 });
