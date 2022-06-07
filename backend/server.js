@@ -38,13 +38,18 @@ app.get('/', function(req, res) {
 		console.log(result);
 		if (!!result) {
 			resultObj.fastStartList.push(makeSongObj(result[0].song, result[0].singer, result[0].image_dir));
+			console.log("exist result");
+
+			res.header("Access-Control-Allow-Origin", "*");
+			res.send(resultObj);
+
+			console.log(resultObj);
+		}
+		else
+		{
+			res.send(err);
 		}
 	});
-
-	res.header("Access-Control-Allow-Origin", "*");
-	res.send(resultObj);
-
-	console.log(resultObj);
 
 	//res.json
 	//res.send('hello world!');
