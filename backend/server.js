@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require('./db.js');
 const app = express();
 const port = 3000;
 
@@ -24,4 +25,8 @@ app.get('/', function(req, res) {
 	//res.json
 	//res.send('hello world!');
 	//res.sendFile(__dirname + '/index.html');
+
+	db.query('show databases', (err, result) => {
+		console.log(result);
+	});
 });
