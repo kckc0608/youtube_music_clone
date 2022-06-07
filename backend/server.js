@@ -43,6 +43,9 @@ app.get('/', function(req, res) {
 
 	res.header("Access-Control-Allow-Origin", "*");
 	res.send(resultObj);
+
+	console.log(resultObj);
+
 	//res.json
 	//res.send('hello world!');
 	//res.sendFile(__dirname + '/index.html');
