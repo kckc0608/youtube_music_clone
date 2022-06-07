@@ -18,7 +18,7 @@ app.listen(port, function(){
 
 // GET == URL
 app.get('/', function(req, res) {
-	resultObj = {
+	const resultObj = {
 		fastStartList: [{
 				song: "Re:Wind",
 				singer: "이세계 아이돌",
