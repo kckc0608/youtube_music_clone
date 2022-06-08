@@ -31,7 +31,6 @@ app.get('/', function(req, res) {
 			for (let i = 0; i < result.length; i++) {
 				const row = result[i];
 				resultObj.fastStartList.push(makeSongObj(row.song, row.singer, row.image_dir));
-				console.log("exist result");
 			}
 
 			res.header("Access-Control-Allow-Origin", "*");
@@ -44,8 +43,4 @@ app.get('/', function(req, res) {
 			res.send(err);
 		}
 	});
-
-	//res.json
-	//res.send('hello world!');
-	//res.sendFile(__dirname + '/index.html');
 });
