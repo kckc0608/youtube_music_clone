@@ -37,8 +37,11 @@ app.get('/', function(req, res) {
 		console.log(err);
 		console.log(result);
 		if (!!result) {
-			resultObj.fastStartList.push(makeSongObj(result[0].song, result[0].singer, result[0].image_dir));
-			console.log("exist result");
+			for (let i = 0; i < result.length; i++) {
+				const row = result[i];
+				resultObj.fastStartList.push(makeSongObj(row.song, row.singer, row.image_dir));
+				console.log("exist result");
+			}
 
 			res.header("Access-Control-Allow-Origin", "*");
 			res.send(resultObj);
