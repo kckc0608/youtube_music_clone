@@ -65,11 +65,6 @@
             </div>
         </template>
 
-        <!-- content script -->
-        <script src="script/render.js"></script>
-        <script src="script/modal.js"></script>
-        <script src="script/database.js" type="module"></script>
-
         <!-- bottom nav-->
         <nav class="bottom_nav">
             <div class="bottom_nav__item">
@@ -94,35 +89,39 @@
 
         <!-- modal -->
         <div class="modal_background">
-		<center>
-        <div class="modal">
-			<div class="item_info">
-				<img class="song_image" src="res/song/re_wind_album.jpeg"></img>
-				<div class="song_info">
-					<div id="title">Re:WIND</div>
-					<div id="singer">idol</div>
-				</div>
-				<span class="material-icons" id="thumb_down">thumb_down_off_alt</span>
-				<span class="material-icons" id="thumb_up">thumb_up_off_alt</span>
-			</div>
-        	<hr/>
-        	<div class="button_listview">
-        		<div class="button_item">
-        			<span class="material-icons" id="button_icon">sensors</span>
-        			<span id="button_content">뮤직스테이션 시작하기</span>
-        		</div>
-        		<div class="button_item">
-        			<span class="material-icons" id="button_icon">playlist_play</span>
-        			<span id="button_content">다음 동영상으로 재생</span>
-        		</div>
-        		<div class="button_item">
-        			<span class="material-icons" id="button_icon">queue_music</span>
-        			<span id="button_content">목록에 추가</span>
-        		</div>
-        	</div>
-        </div>
-        </center>
+            <center>
+                <div class="modal">
+                    <div class="item_info">
+                        <img class="song_image" src="res/song/re_wind_album.jpeg"></img>
+                        <div class="song_info">
+                            <div id="title">Re:WIND</div>
+                            <div id="singer">idol</div>
+                        </div>
+                        <span class="material-icons" id="thumb_down">thumb_down_off_alt</span>
+                        <span class="material-icons" id="thumb_up">thumb_up_off_alt</span>
+                    </div>
+                    <hr/>
+                    <div class="button_listview">
+                        <div class="button_item">
+                            <span class="material-icons" id="button_icon">sensors</span>
+                            <span id="button_content">뮤직스테이션 시작하기</span>
+                        </div>
+                        <div class="button_item">
+                            <span class="material-icons" id="button_icon">playlist_play</span>
+                            <span id="button_content">다음 동영상으로 재생</span>
+                        </div>
+                        <div class="button_item">
+                            <span class="material-icons" id="button_icon">queue_music</span>
+                            <span id="button_content">목록에 추가</span>
+                        </div>
+                    </div>
+                </div>
+            </center>
 		</div>
-        
+
+        <!-- content script -->
+        <script src="script/render.js"></script>
+        <script src="script/modal.js"></script>
+        <script src="script/button-event.js" type="module"></script>
     </body>
 </html>
