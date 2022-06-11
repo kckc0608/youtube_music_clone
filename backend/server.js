@@ -47,5 +47,5 @@ app.get('/', function(req, res) {
 
 app.post('/login', function(req, res) {
 	console.log("login");
-	console.log(req);
+	console.log(req.body);
 });
