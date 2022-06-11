@@ -146,56 +146,56 @@ if ('content' in document.createElement('template')) {
 
 	const RENDER = function() {
 
-	// 즐겨 듣는 음악
-	let slider = make_Slider();
-	addContent("", "", "즐겨 듣는 음악", slider);
+		// 즐겨 듣는 음악
+		let slider = make_Slider();
+		addContent("", "", "즐겨 듣는 음악", slider);
 
-	add_item(slider, "res/song/re_wind_album.jpeg", "RE : WIND", "이세계아이돌");
-	for (let i = 0; i < 8; i++) {
-    	add_item(slider);
-    }
+		add_item(slider, "res/song/re_wind_album.jpeg", "RE : WIND", "이세계아이돌");
+		for (let i = 0; i < 8; i++) {
+			add_item(slider);
+		}
 
-	// 밤에 어울리는 음악
-	slider = make_Slider();
-	add_item(slider, "", "노래", "가수");
-	add_item(slider, "", "노래", "가수");
-	add_item(slider, "", "노래", "가수");
-	add_item(slider, "", "노래", "가수");
-	add_item(slider, "", "노래", "가수");
-	addContent("", "다시 듣기", "밤에 어울리는 음악", slider);
+		// 밤에 어울리는 음악
+		slider = make_Slider();
+		add_item(slider, "", "노래", "가수");
+		add_item(slider, "", "노래", "가수");
+		add_item(slider, "", "노래", "가수");
+		add_item(slider, "", "노래", "가수");
+		add_item(slider, "", "노래", "가수");
+		addContent("", "다시 듣기", "밤에 어울리는 음악", slider);
 
-	// 아래 아티스트를 좋아한다면
-	slider = make_Slider();
-	add_item(slider, "", "song", "singer");
+		// 아래 아티스트를 좋아한다면
+		slider = make_Slider();
+		add_item(slider, "", "song", "singer");
 
-	addContent(
-		"res/singer/Yorushika_Logo.jpg",
-		"아래 아티스트를 좋아한다면",
-		"Yorushika(ヨルシカ)",
-		slider
-	);
+		addContent(
+			"res/singer/Yorushika_Logo.jpg",
+			"아래 아티스트를 좋아한다면",
+			"Yorushika(ヨルシカ)",
+			slider
+		);
 
-	addContent(
-		"",
-		"아래 아티스트를 좋아한다면",
-		"삼월의 판타시아",
-		slider
-	);
+		addContent(
+			"",
+			"아래 아티스트를 좋아한다면",
+			"삼월의 판타시아",
+			slider
+		);
 
-	addContent(
-		"",
-		"아래 아티스트를 좋아한다면",
-		"Mrs. GREEN APPLE",
-		slider
-	);
+		addContent(
+			"",
+			"아래 아티스트를 좋아한다면",
+			"Mrs. GREEN APPLE",
+			slider
+		);
 
-	// 아래 아티스트의 콘텐츠 더보기:
-	slider = make_Slider();
-	add_item(slider, "", "song", "kobasolo");
-	add_item(slider, "", "song", "kobasolo");
-	add_item(slider, "", "song", "kobasolo");
-	add_item(slider, "", "song", "kobasolo");
-	addContent("", "아래 아티스트의 콘텐츠 더보기:", "kobasolo", slider, true); // Yorushika
+		// 아래 아티스트의 콘텐츠 더보기:
+		slider = make_Slider();
+		add_item(slider, "", "song", "kobasolo");
+		add_item(slider, "", "song", "kobasolo");
+		add_item(slider, "", "song", "kobasolo");
+		add_item(slider, "", "song", "kobasolo");
+		addContent("", "아래 아티스트의 콘텐츠 더보기:", "kobasolo", slider, true); // Yorushika
 
 	}
 }

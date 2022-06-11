@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/login.css">
     <title>로그인</title>
 </head>
 <body>
-    <h2>로그인</h2>
+    <h2 class="center">로그인</h2>
     <form action="http://api.everdu.ga/project/ym_music/login" method="post">
-        <input name="id" type="text" placeholder="아이디">
-        <input name="pw" type="password" placeholder="비밀번호">
-        <input type="submit" value="전송">
+        <div>
+            <input name="id" type="text" placeholder="아이디">
+        </div>
+        <div>
+            <input name="pw" type="password" placeholder="비밀번호">
+        </div>
+        <div>
+            <input type="submit" value="전송">
+        </div>
     </form>
 </body>
 </html>
