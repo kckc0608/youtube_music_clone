@@ -1,3 +1,23 @@
-.center {
-    margin: auto;
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 150px;
+}
+
+.form-item {
+    /*
+    background-color: yellow;
+    */
+    margin: 4px;
+}
+
+#login-button {
+    background-color: white;
+    padding: 4px;
+    width: 156px;
+    border-radius: 4px;
 }
