@@ -49,5 +49,5 @@ app.post('/login', function(req, res) {
 	console.log("login");
 	console.log(req.body);
 	//res.cookie()
-	res.redirect('http://everdu.ga/project/ym_music');
+	res.redirect('http://everdu.ga/project/ym_clone');
 });
