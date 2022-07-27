@@ -14,6 +14,7 @@
     <form action="http://api.everdu.ga/project/ym_music/login" method="post" name="login-form">
         <div class="form-item">
             <input id="id-input" name="id" type="text" placeholder="아이디" required>
+			<!-- pattern="^[0-9a-zA-Z]([-_]?[0-9a-zA-Z]){4,15}$"-->
         </div>
         <div class="form-item">
             <input id="pw-input" name="pw" type="password" placeholder="비밀번호" required>
@@ -25,6 +26,6 @@
             <a href="">비밀번호 찾기</a>
         </div>
     </form>
-    <script src="/script/login.js"></script>
+    <script src="../script/login.js"></script>
 </body>
 </html>

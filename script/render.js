@@ -117,13 +117,26 @@ if ('content' in document.createElement('template')) {
 		return list_slider;
 	};
 
-
-	const API_ADDRESS = 'http://api.everdu.ga/project/ym_music/';
+	//const API_ADDRESS = 'http://api.everdu.ga/project/ym_music/';
+	const API_ADDRESS = 'http://everdu.ga/api/project/ym_clone/';
 
 	// API 서버와 통신
-	fetch(API_ADDRESS).then(res => res.json())
-		.then((data) => {
+	fetch(
+		API_ADDRESS, {
+			'withCredentials': true,
+		}
+	).then((res) => {
+		console.log(res);
+		if (res.ok)
+			return res.json();
+		}).then((data) => {
 			const MainPageData = data;
+
+			if (data.status === "need login")
+			{
+				alert("need login");
+				return;
+			}
 			
 			// 빠른 선곡
 			const list_slider = make_list_slider();
@@ -142,6 +155,14 @@ if ('content' in document.createElement('template')) {
 
 			// 나머지 아직 안그린거 렌더링
 			RENDER();
+		}).catch((error) => {
+			const main_content = document.querySelector('.content_area');
+			const divTag = document.createElement("div");
+			const text = document.createTextNode(error);
+
+			divTag.appendChild(text);
+
+			main_content.appendChild(divTag);
 		});
 
 	const RENDER = function() {
