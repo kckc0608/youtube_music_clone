@@ -22,12 +22,13 @@ login_form.addEventListener("submit", (event) => {
 		'pw': pw,
 	};
 
-	const url = 'http://api.everdu.ga/project/ym_music/login';
-	fetch(url, {
+	//const url = 'http://api.everdu.ga/project/ym_music/login';
+	const API_ADDRESS = 'http://everdu.ga/api/project/ym_clone/login';
+	fetch(API_ADDRESS, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			'withCredentials': 'true',
+//			'withCredentials': 'true',
 		},
 		body: JSON.stringify(data),
 	}).then((response) => {

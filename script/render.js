@@ -37,30 +37,27 @@ if ('content' in document.createElement('template')) {
 	};
 
 	const make_Slider = function() {
-		const new_slider = document.createElement('div');
-		new_slider.setAttribute('class', 'horizontal_slider');
-		return new_slider;
-	};
+		const slider = document.createElement('div');
+		slider.setAttribute('class', 'horizontal_slider');
+		slider.appendItem = function(imageSource, song, singer) {
+			// get slider item template
+			const template_slider_item = document.querySelector('#t_slider_item');
+			const item = document.importNode(template_slider_item.content, true);
 
-	const add_item = function(slider, imageSource, song, singer) {
-		// get slider item template
-		const template_slider_item = document.querySelector('#t_slider_item');
-		const item = document.importNode(template_slider_item.content, true);
+			if (!!imageSource) {
+				item.querySelector('.slider_item_image').setAttribute('src', imageSource);
+			}
+			if (song !== undefined) {
+				item.querySelector('.slider_item_song').textContent = song;
+			}
+			if (singer !== undefined) {
+				item.querySelector('.slider_item_singer').textContent = singer;
+			}
 
-		if (!!imageSource) {
-			item.querySelector('.slider_item_image').setAttribute('src', imageSource);
-		}
-		if (song !== undefined) {
-			item.querySelector('.slider_item_song').textContent = song;
-		}
-		if (singer !== undefined) {
-			item.querySelector('.slider_item_singer').textContent = singer;
-		}
-//		if (!!slider.qeurySelector('.slider_item') === false) {
-//			item.style.marginLeft = 30;
-//		}
+			slider.appendChild(item);
+		};
 
-		slider.appendChild(item);
+		return slider;
 	};
 
 	const make_list_slider = function() {
@@ -126,10 +123,10 @@ if ('content' in document.createElement('template')) {
 			'withCredentials': true,
 		}
 	).then((res) => {
-		console.log(res);
 		if (res.ok)
 			return res.json();
-		}).then((data) => {
+		})
+		.then((data) => {
 			const MainPageData = data;
 
 			if (data.status === "need login")
@@ -146,6 +143,7 @@ if ('content' in document.createElement('template')) {
 				const item = fastSelectList[i];
 				list_slider.addItem(item.imageDir, item.song, item.singer);
 			}
+
 			addContent(
 				"",
 				"이 노래로 뮤직 스테이션 시작하기",
@@ -155,7 +153,8 @@ if ('content' in document.createElement('template')) {
 
 			// 나머지 아직 안그린거 렌더링
 			RENDER();
-		}).catch((error) => {
+		})
+		.catch((error) => {
 			const main_content = document.querySelector('.content_area');
 			const divTag = document.createElement("div");
 			const text = document.createTextNode(error);
@@ -168,26 +167,27 @@ if ('content' in document.createElement('template')) {
 	const RENDER = function() {
 
 		// 즐겨 듣는 음악
-		let slider = make_Slider();
-		addContent("", "", "즐겨 듣는 음악", slider);
+		const favoriteSlider = make_Slider();
+		addContent("", "", "즐겨 듣는 음악", favoriteSlider);
 
-		add_item(slider, "res/song/re_wind_album.jpeg", "RE : WIND", "이세계아이돌");
+		favoriteSlider.appendItem("res/song/re_wind_album.jpeg", "RE : WIND", "이세계아이돌");
 		for (let i = 0; i < 8; i++) {
-			add_item(slider);
+			favoriteSlider.appendItem();
 		}
 
 		// 밤에 어울리는 음악
-		slider = make_Slider();
-		add_item(slider, "", "노래", "가수");
-		add_item(slider, "", "노래", "가수");
-		add_item(slider, "", "노래", "가수");
-		add_item(slider, "", "노래", "가수");
-		add_item(slider, "", "노래", "가수");
-		addContent("", "다시 듣기", "밤에 어울리는 음악", slider);
+		const nightRecommendSlider = make_Slider();
+		nightRecommendSlider.appendItem("", "노래", "가수");
+		nightRecommendSlider.appendItem("", "노래", "가수");
+		nightRecommendSlider.appendItem("", "노래", "가수");
+		nightRecommendSlider.appendItem("", "노래", "가수");
+		nightRecommendSlider.appendItem("", "노래", "가수");
+		nightRecommendSlider.appendItem("", "노래", "가수");
+		addContent("", "다시 듣기", "밤에 어울리는 음악", nightRecommendSlider);
 
 		// 아래 아티스트를 좋아한다면
-		slider = make_Slider();
-		add_item(slider, "", "song", "singer");
+		const slider = make_Slider();
+		slider.appendItem("", "song", "singer");
 
 		addContent(
 			"res/singer/Yorushika_Logo.jpg",
@@ -211,17 +211,17 @@ if ('content' in document.createElement('template')) {
 		);
 
 		// 아래 아티스트의 콘텐츠 더보기:
-		slider = make_Slider();
-		add_item(slider, "", "song", "kobasolo");
-		add_item(slider, "", "song", "kobasolo");
-		add_item(slider, "", "song", "kobasolo");
-		add_item(slider, "", "song", "kobasolo");
-		addContent("", "아래 아티스트의 콘텐츠 더보기:", "kobasolo", slider, true); // Yorushika
-
+		const moreAboutArtistSlider = make_Slider();
+		moreAboutArtistSlider.appendItem("", "song", "kobasolo");
+		moreAboutArtistSlider.appendItem("", "song", "kobasolo");
+		moreAboutArtistSlider.appendItem("", "song", "kobasolo");
+		moreAboutArtistSlider.appendItem("", "song", "kobasolo");
+		moreAboutArtistSlider.appendItem("", "song", "kobasolo");
+		addContent("", "아래 아티스트의 콘텐츠 더보기:", "kobasolo", moreAboutArtistSlider, true); // Yorushika
 	}
 }
 else
 {
     let slider = document.querySelector('#slider_favorite_music');
-    slider.innerHTML = 'No Data';
+    slider.innerHTML = "Can't get template";
 }
