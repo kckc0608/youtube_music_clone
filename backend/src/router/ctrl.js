@@ -67,17 +67,11 @@ const process = {
 				} else {
 					if (req.body.pw === result[0].password) {
 						console.log("login");
-						/*
-						req.session.uid       = result[0].id;
-						req.session.author_id = result[0].id;
-						req.session.isLogined = true;
-						console.log(req.session);
-	*/
 						result_data.success = true;
 						
 						// cookie test
 						res.cookie("auth", "true", {
-							maxAge: 1000*60*1,
+							maxAge: 1000*60*10,
 							httpOnly: true,
 						});
 					}
@@ -93,7 +87,6 @@ const process = {
 			}
 			else {
 				console.log(err);
-				//res.redirect('back');
 			}
 		});
 	}
