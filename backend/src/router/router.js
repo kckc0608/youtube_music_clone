@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.use(cookie_parser());
 router.use(express.json());
-router.use(cors());
+//router.use(cors());
 
 router.get('/', ctrl.output.main);
 

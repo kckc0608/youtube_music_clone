@@ -1,33 +1,35 @@
 import {Components} from './components.js';
 
-const addItemToContentSection = function(item) {
-	// get main_content element to put new item
-	const main_content = document.querySelector('.content_area');
-	main_content.appendChild(item);
+const API_ADDRESS = 'http://everdu.ga/api/project/ym_clone/';
+const FETCH_OPTION = {
+	'withCredentials': true,
 };
 
-//const API_ADDRESS = 'http://api.everdu.ga/project/ym_music/';
-const API_ADDRESS = 'http://everdu.ga/api/project/ym_clone/';
-
-// API 서버와 통신
-fetch(
-	API_ADDRESS, 
-	{
-		'withCredentials': true,
-	}
-).then((res) => {
+fetch(API_ADDRESS, FETCH_OPTION)
+.then((res) => {
 	if (res.ok)
 		return res.json();
 	})
-.then((data) => {
-	const MainPageData = data;
-
-	if (data.status === "need login")
-	{
-		alert("need login");
-		return;
+.then((MainPageData) => {
+	if (MainPageData.status === "success") {
+		render(MainPageData);
 	}
-	
+	else {
+		alert("need login");	
+	}
+})
+.catch((error) => {
+	render_error(error);
+});
+
+const render = function(MainPageData) {
+
+	const addItemToContentSection = function(item) {
+		// get main_content element to put new item
+		const main_content = document.querySelector('.content_area');
+		main_content.appendChild(item);
+	};
+
 	// 빠른 선곡
 	const list_slider = Components.createListSlider();
 	const fastSelectList = MainPageData.fastStartList;
@@ -40,24 +42,10 @@ fetch(
 	let item = Components.createMainItem("", "이 노래로 뮤직 스테이션 시작하기", "빠른 선곡", list_slider);
 	addItemToContentSection(item);
 
-	// 나머지 아직 안그린거 렌더링
-	RENDER();
-})
-.catch((error) => {
-	const main_content = document.querySelector('.content_area');
-	const divTag = document.createElement("div");
-	const text = document.createTextNode(error);
-
-	divTag.appendChild(text);
-
-	main_content.appendChild(divTag);
-});
-
-const RENDER = function() {
 
 	// 즐겨 듣는 음악
 	const favoriteSlider = Components.createSlider();
-	let item = Components.createMainItem("", "", "즐겨 듣는 음악", favoriteSlider);
+	item = Components.createMainItem("", "", "즐겨 듣는 음악", favoriteSlider);
 	addItemToContentSection(item);
 
 	favoriteSlider.appendItem("res/song/re_wind_album.jpeg", "RE : WIND", "이세계아이돌");
@@ -122,4 +110,14 @@ const RENDER = function() {
 	);
 
 	addItemToContentSection(item);
-}
+};
+
+const render_error = function(error) {
+	const main_content = document.querySelector('.content_area');
+	const divTag = document.createElement("div");
+	const text = document.createTextNode(error);
+
+	divTag.appendChild(text);
+
+	main_content.appendChild(divTag);
+};

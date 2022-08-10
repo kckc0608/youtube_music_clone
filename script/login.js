@@ -17,25 +17,32 @@ login_form.addEventListener("submit", (event) => {
 		'pw': pw,
 	};
 
-	//const url = 'http://api.everdu.ga/project/ym_music/login';
 	const API_ADDRESS = 'http://everdu.ga/api/project/ym_clone/login';
-	fetch(API_ADDRESS, {
+	const FETCH_OPTION = {
 		method: 'POST',
+		credentials: "same-origin",
 		headers: {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify(data),
-	}).then((response) => {
+	};
+
+	fetch(
+		API_ADDRESS, 
+		FETCH_OPTION,
+	)
+	.then((response) => {
 		return response.json();
-	}).then((data) => {
-		if (data.success)
-		{
+	})
+	.then((data) => {
+		if (data.success) {
 			window.location.href = '../';
 		}
 		else {
 			alert(data.msg);
 		}
-	}).catch((err) => {
+	})
+	.catch((err) => {
 		console.log(err);
 	});
 });
