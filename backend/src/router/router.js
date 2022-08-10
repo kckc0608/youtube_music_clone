@@ -11,6 +11,6 @@ router.use(express.json());
 router.get('/', ctrl.output.main);
 
 router.post('/login', ctrl.process.login);
-router.post('/register', ()=>{});
+router.post('/register', ctrl.process.register);
 
 module.exports = router;
