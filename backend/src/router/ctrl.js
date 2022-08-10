@@ -18,6 +18,7 @@ const output = {
 		}
 
 		const cookies = req.cookies;
+		console.log(cookies);
 		if (cookies.auth)
 		{
 			resultObj.status = "success";
@@ -53,7 +54,10 @@ const process = {
 	login: function(req, res) {
 		console.log(req.body);
 
-		const result_data = {};
+		const result_data = {
+			success: false,
+			msg: "no msg"
+		};
 		const query = 'select id, password' + 
 					  '  from user' +
 					  " where id = '" + req.body.id + "'";
@@ -62,29 +66,27 @@ const process = {
 			if (!!result) {
 				if (result.length === 0) {
 					console.log("해당하는 아이디가 없습니다.");
-					result_data.success = false;
 					result_data.msg = "no_id";
 				} else {
 					if (req.body.pw === result[0].password) {
 						console.log("login");
-						/*
-						req.session.uid       = result[0].id;
-						req.session.author_id = result[0].id;
-						req.session.isLogined = true;
-						console.log(req.session);
-	*/
 						result_data.success = true;
+						result_data.msg = "success";
 						
 						// cookie test
-						res.cookie("auth", "true", {
-							maxAge: 1000*60*1,
-							httpOnly: true,
-						});
+						res.cookie(
+							"auth", 
+							"true", 
+							{
+								maxAge: 1000*60*1,
+								httpOnly: true,
+							}
+						);
+						
+						console.log("cookie set");
 					}
 					else {
 						console.log("wrong password");
-
-						result_data.success = false;
 						result_data.msg = "wrong_pw";
 					}
 				}
@@ -93,7 +95,6 @@ const process = {
 			}
 			else {
 				console.log(err);
-				//res.redirect('back');
 			}
 		});
 	}
