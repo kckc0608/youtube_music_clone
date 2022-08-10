@@ -97,6 +97,37 @@ const process = {
 				console.log(err);
 			}
 		});
+	},
+
+	register: function(req, res) {
+		console.log(req.body);
+
+		const result_data = {
+			success: false,
+			msg: "no msg"
+		};
+		const query = "INSERT" 
+					+ "  INTO user ("
+					+ "	id, "
+					+ "	password, "
+					+ "	nick"
+					+ ")"
+					+ "VALUES ("
+					+ "	'" + req.body.id + "',"
+					+ "	'" + req.body.pw + "',"
+					+ "	''" // nickname TODO
+					+ ")";
+
+		db.query(query, (err, result) => {
+			if (!!result) {
+				result_data.success = true;
+				result_data.msg = "success";
+				res.send(result_data);
+			}
+			else {
+				console.log(err);
+			}
+		});
 	}
 };
 
