@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/form.css">
+    <title>회원가입</title>
+</head>
+<body>
+    <center>
+        <h2>회원가입</h2>
+    </center>
+    <form action="" method="" name="register-form">
+        <div class="form-item">
+            <input id="id-input" name="id" type="text" placeholder="아이디" required>
+        </div>
+        <div class="form-item">
+            <input id="pw-input" name="pw" type="password" placeholder="비밀번호" required>
+        </div>
+        <div class="form-item">
+            <input id="pw-check" name="pw_check" type="password" placeholder="비밀번호 확인" required>
+        </div>
+        <div class="form-item">
+            <input id="nick" name="nick" type="text" placeholder="닉네임" required>
+        </div>
+        
+        <input class="form-item" id="login-button" type="submit" value="계정 생성하기">
+        
+        <div class="form-item">
+            <a href="./login.html">로그인하러 가기</a>
+        </div>
+
+        <div class="form-item" id="error-msg">
+            Error Message
+        </div>
+    </form>
+    <script src="../script/register.js"></script>
+</body>
+</html>
