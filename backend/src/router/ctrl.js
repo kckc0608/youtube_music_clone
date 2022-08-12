@@ -115,7 +115,7 @@ const process = {
 					+ "VALUES ("
 					+ "	'" + req.body.id + "',"
 					+ "	'" + req.body.pw + "',"
-					+ "	''" // nickname TODO
+					+ "	'" + req.body.nick + "'"
 					+ ")";
 
 		db.query(query, (err, result) => {
