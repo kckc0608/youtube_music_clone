@@ -80,6 +80,7 @@ const process = {
 							{
 								maxAge: 1000*60*1,
 								httpOnly: true,
+								domain: 'everdu.ga',
 							}
 						);
 						
