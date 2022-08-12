@@ -36,7 +36,7 @@ const render = function(MainPageData) {
 	
 	for (let i = 0; i < fastSelectList.length; i++) {
 		const item = fastSelectList[i];
-		list_slider.addItem(item.imageDir, item.song, item.singer);
+		list_slider.addItem(item.image_dir, item.song, item.singer);
 	}
 
 	let item = Components.createMainItem("", "이 노래로 뮤직 스테이션 시작하기", "빠른 선곡", list_slider);
