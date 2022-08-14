@@ -62,7 +62,7 @@ const process = {
 		db.query(query, (err, result) => {
 			if (!!result) {
 				if (result.length === 0) {
-					console.log("�ش��ϴ� ���̵� �����ϴ�.");
+					console.log("아이디가 존재하지 않습니다");
 					result_data.msg = "no_id";
 				} else {
 					if (req.body.pw === result[0].password) {

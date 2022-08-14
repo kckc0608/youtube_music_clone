@@ -6,6 +6,7 @@
 
 .material-icons {
     margin: 4px;
+    cursor: pointer;
 }
 
 #logo {
@@ -198,6 +199,7 @@
     flex-grow: 1;
     text-align: center;
     font-size: 12px;
+    cursor: pointer;
 }
 
 .bottom_nav__item__content {
