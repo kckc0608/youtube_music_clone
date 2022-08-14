@@ -1,5 +1,6 @@
 const express = require('express');
 const db      = require('../db/db').connection;
+const query   = require('../db/query');
 
 const output = {
 	main: function(req, res) {
@@ -8,29 +9,25 @@ const output = {
 			msg: "not login",
 		};
 
-		const makeSongObj = function(song, singer, imageDir) {
-			const obj = {};
-			obj.song = song;
-			obj.singer = singer;
-			obj.image_dir = imageDir;
-
-			return obj;
-		}
-
 		const cookies = req.cookies;
 		console.log(cookies);
 		if (cookies.auth)
 		{
 			resultObj.status = "success";
 			resultObj.fastStartList = [];
-			const query = 'select * from fast_start';
-			db.query(query, (err, result) => {
+			db.query(query.SELECT_ALL_FROM_FAST_START, (err, result) => {
 				console.log(err);
 				console.log(result);
 				if (!!result) {
 					for (let i = 0; i < result.length; i++) {
 						const row = result[i];
-						resultObj.fastStartList.push(makeSongObj(row.song, row.singer, row.image_dir));
+						const songObj = {
+							song: row.song,
+							singer: row.singer,
+							image_dir: row.image_dir
+						};
+
+						resultObj.fastStartList.push(songObj);
 					}
 				}
 				else
@@ -65,7 +62,7 @@ const process = {
 		db.query(query, (err, result) => {
 			if (!!result) {
 				if (result.length === 0) {
-					console.log("ÇØ´çÇÏ´Â ¾ÆÀÌµð°¡ ¾ø½À´Ï´Ù.");
+					console.log("ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 					result_data.msg = "no_id";
 				} else {
 					if (req.body.pw === result[0].password) {
