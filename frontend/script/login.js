@@ -39,10 +39,17 @@ login_form.addEventListener("submit", (event) => {
 			window.location.href = '../';
 		}
 		else {
-			alert(data.msg);
+			ShowErrorMessage(data.msg);
 		}
 	})
 	.catch((err) => {
+		ShowErrorMessage(err);
 		console.log(err);
 	});
 });
+
+const ShowErrorMessage = function(errorMessage) {
+	const error_msg_div = document.getElementById("error-msg");
+	error_msg_div.style.visibility = "visible";
+	error_msg_div.textContent = errorMessage;
+};

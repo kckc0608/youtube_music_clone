@@ -51,49 +51,59 @@ const process = {
 	login: function(req, res) {
 		console.log(req.body);
 
+		const reqID = req.body.id;
+		const reqPW = req.body.pw;
+
 		const result_data = {
 			success: false,
-			msg: "no msg"
+			msg: ""
 		};
-		const query = 'select id, password' + 
-					  '  from user' +
-					  " where id = '" + req.body.id + "'";
 
-		db.query(query, (err, result) => {
-			if (!!result) {
-				if (result.length === 0) {
-					console.log("아이디가 존재하지 않습니다");
-					result_data.msg = "no_id";
-				} else {
-					if (req.body.pw === result[0].password) {
-						console.log("login");
+		const query = 'SELECT id, password' + 
+					  '  FROM user' +
+					  " WHERE id = '" + reqID + "'";
+
+		db.query(query, (err, queryResultWithRequestID) => {
+			if (isValidResult()) {
+				if (isExistResult()) {
+					if (isRightPW(reqPW)) {
 						result_data.success = true;
 						result_data.msg = "success";
-						
-						// cookie test
-						res.cookie(
-							"auth", 
-							"true", 
-							{
-								maxAge: 1000*60*1,
-								httpOnly: true,
-								domain: 'everdu.ga',
-							}
-						);
-						
-						console.log("cookie set");
+							
+						res.cookie("user", reqID, {
+							maxAge: 1000*60*1,
+							httpOnly: true,
+							domain: 'everdu.ga',
+						});
 					}
 					else {
-						console.log("wrong password");
-						result_data.msg = "wrong_pw";
+						result_data.msg = "비밀번호가 틀렸습니다.";
 					}
 				}
-
-				res.send(result_data);
+				else {
+					result_data.msg = "아이디가 존재하지 않습니다";
+				}
+			
 			}
 			else {
 				console.log(err);
+				result_data.msg = err;
 			}
+
+			res.send(result_data);
+
+
+			const isValidResult = function() {
+				return !!queryResultWithRequestID;
+			}
+
+			const isExistResult = function() {
+				return queryResultWithRequestID.length > 0
+			};
+
+			const isRightPW = function(pw) {
+				return pw === queryResultWithRequestID[0].password
+			};
 		});
 	},
 
@@ -126,7 +136,20 @@ const process = {
 				console.log(err);
 			}
 		});
-	}
+	},
+
+	auth: function(req, res) {
+		resultObj = {};
+		const cookies = req.cookies;
+		try {
+			resultObj.result = cookies.auth;
+		} catch (error) {
+			resultObj.result = undefined;
+			resultObj.msg = error;
+		}
+
+		res.send(resultObj);
+	},
 };
 
 module.exports = {
