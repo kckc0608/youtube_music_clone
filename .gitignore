@@ -1,3 +1,4 @@
 *.save
 *.save.*
 backend/node_modules
+everdu.cmd

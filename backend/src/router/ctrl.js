@@ -64,6 +64,18 @@ const process = {
 					  " WHERE id = '" + reqID + "'";
 
 		db.query(query, (err, queryResultWithRequestID) => {
+			const isValidResult = function() {
+				return !!queryResultWithRequestID;
+			}
+
+			const isExistResult = function() {
+				return queryResultWithRequestID.length > 0
+			};
+
+			const isRightPW = function(pw) {
+				return pw === queryResultWithRequestID[0].password
+			};
+			
 			if (isValidResult()) {
 				if (isExistResult()) {
 					if (isRightPW(reqPW)) {
@@ -91,19 +103,6 @@ const process = {
 			}
 
 			res.send(result_data);
-
-
-			const isValidResult = function() {
-				return !!queryResultWithRequestID;
-			}
-
-			const isExistResult = function() {
-				return queryResultWithRequestID.length > 0
-			};
-
-			const isRightPW = function(pw) {
-				return pw === queryResultWithRequestID[0].password
-			};
 		});
 	},
 
