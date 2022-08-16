@@ -11,7 +11,7 @@ const output = {
 
 		const cookies = req.cookies;
 		console.log(cookies);
-		if (cookies.auth)
+		if (cookies.user)
 		{
 			resultObj.status = "success";
 			resultObj.fastStartList = [];
@@ -75,7 +75,7 @@ const process = {
 			const isRightPW = function(pw) {
 				return pw === queryResultWithRequestID[0].password
 			};
-			
+
 			if (isValidResult()) {
 				if (isExistResult()) {
 					if (isRightPW(reqPW)) {
@@ -141,7 +141,7 @@ const process = {
 		resultObj = {};
 		const cookies = req.cookies;
 		try {
-			resultObj.result = cookies.auth;
+			resultObj.result = cookies.user;
 		} catch (error) {
 			resultObj.result = undefined;
 			resultObj.msg = error;
