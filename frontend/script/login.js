@@ -6,9 +6,9 @@ login_form.addEventListener("submit", (event) => {
 	const pw = login_form["pw"].value;
 
 	// validating form
-	const id_reg = /^[0-9a-zA-Z]([-_]?[0-9a-zA-Z]){4,15}$/;
+	const id_reg = /[a-zA-Z0-9]{1}\w{5,15}/g;
     if (!id_reg.test(id)) {
-        alert("wrong id!");
+        ShowErrorMessage("아이디 형식이 맞지 않습니다.")
         return false;
     }
 
