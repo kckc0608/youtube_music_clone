@@ -1,0 +1,20 @@
+.player_nav {
+    position: fixed;
+    bottom: 50px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+
+    height: 60px;
+    background-color: lightgray;
+    margin: 0px;
+}
+
+#song_info.player_nav_section{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}

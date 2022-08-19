@@ -9,6 +9,10 @@
     cursor: pointer;
 }
 
+.material-icons-outlined {
+    cursor: pointer;
+}
+
 #logo {
     /*display: flex;*/
     /*align-items: center;*/
