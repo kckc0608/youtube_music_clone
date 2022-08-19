@@ -147,7 +147,7 @@ const process = {
 			resultObj.msg = error;
 		}
 
-		res.send(resultObj);
+		res.send(resultObj); // nodemon test
 	},
 };
 
