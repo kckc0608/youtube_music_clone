@@ -15,7 +15,7 @@ fetch(API_ADDRESS, FETCH_OPTION)
 		render(MainPageData);
 	}
 	else {
-		alert("need login");	
+		renderLoginAlertPage();	
 	}
 })
 .catch((error) => {
@@ -110,6 +110,15 @@ const render = function(MainPageData) {
 	);
 
 	addItemToContentSection(item);
+};
+
+const renderLoginAlertPage = function() {
+	const main_content = document.querySelector('.content_area');
+	const divTag = document.createElement("div");
+	const text = document.createTextNode("로그인이 필요합니다.");
+	
+	divTag.appendChild(text);
+	main_content.appendChild(divTag);
 };
 
 const render_error = function(error) {
