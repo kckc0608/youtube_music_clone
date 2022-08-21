@@ -102,10 +102,8 @@ if ('content' in document.createElement('template')) {
 				});
 			});
 
-			console.log(item);
 			console.log(item.querySelector(".list_item"));
-
-			item.addEventListener("click", () => {
+			item.querySelector(".list_item").addEventListener("click", () => {
 				location.href = "views/song.html";
 			});
 
