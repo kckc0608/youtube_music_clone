@@ -102,6 +102,10 @@ if ('content' in document.createElement('template')) {
 				});
 			});
 
+			item.addEventListener("click", () => {
+				location.href = "views/song.html";
+			});
+
 			slider_container.lastChild.appendChild(item);
 			list_slider.itemCount += 1;
 		};
