@@ -123,6 +123,10 @@
     height: 58px;
 }
 
+.list_item:hover {
+    cursor: pointer;
+}
+
 .list_item_image {
     width: 50px;
     margin: 4px;
