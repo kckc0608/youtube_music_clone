@@ -102,6 +102,8 @@ if ('content' in document.createElement('template')) {
 				});
 			});
 
+			console.log(item);
+
 			item.addEventListener("click", () => {
 				location.href = "views/song.html";
 			});
