@@ -106,6 +106,10 @@ if ('content' in document.createElement('template')) {
 				location.href = "views/song.html";
 			});
 
+			item.addEventListener("mouseover", () => {
+				alert("test");
+			});
+
 			slider_container.lastChild.appendChild(item);
 			list_slider.itemCount += 1;
 		};
