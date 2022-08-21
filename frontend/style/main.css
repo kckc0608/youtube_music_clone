@@ -14,15 +14,12 @@
 }
 
 #logo {
-    /*display: flex;*/
-    /*align-items: center;*/
     margin-right: auto;
 }
 
 .content_area {
     padding-top: 10px;
     padding-bottom: 50px;
-    /*padding-left: 30px;*/
 }
 
 .chip_area {
@@ -46,8 +43,6 @@
     padding: 6px;
     padding-left: 8px;
     padding-right: 8px;
-    /*border-style: solid;*/
-    /*border-color: #fff;*/
     border-radius: 15px / 50%;
     background-color: #eee;
     box-shadow: 0px -1px 1px #333;
@@ -64,13 +59,11 @@
 	align-items: center;
 	padding-left: 30px;
 	margin-bottom: 8px;
-	/*background-color: orange;*/
 }
 
 #item_image {
 	width: 42px;
 	height: 42px;
-	/*padding: 10px;*/
 	border-radius: 50%;
 	margin-right: 12px;
 	background-color: orange;
@@ -100,7 +93,6 @@
 
 .horizontal_list_slider {
     overflow-x: hidden;
-    /*width: 210px;*/
 }
 
 .list_slider_item_list::-webkit-scrollbar {
@@ -127,7 +119,6 @@
 .list_item {
     display: flex;
     align-items: center;
-    /*background-color: yellow;*/
     margin-bottom: 4px;
     height: 58px;
 }
@@ -137,7 +128,6 @@
     margin: 4px;
     margin-right: 12px;
     border-radius: 4px;
-    /*background-color: grey;*/
 }
 
 .list_item_song {
@@ -164,7 +154,6 @@
 .slider_item {
     display: inline-block;
     margin-right: 10px;
-    /*background-color: yellow;*/
     font-size: 16px;
 }
 
@@ -195,9 +184,6 @@
     box-shadow: 0 -2px 5px -2px #333;
     align-items: center;
     background-color: #fff;
-    /*will-change: transform;
-    transform: translateZ(0);*/
-    /*z-index:100;*/
 }
 .bottom_nav__item {
     flex-grow: 1;
@@ -241,9 +227,7 @@
 	right: 0px;
 	margin: auto;
 	max-width: 600px;
-	/*margin: 0px 50px 0px 50px;  top right bottom left */
 	background-color: lightgrey;
-	/* border: solid black 2px; */
 	animation-name: modal;
 	animation-duration: .2s;
 }
