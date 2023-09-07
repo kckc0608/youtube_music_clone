@@ -42,6 +42,7 @@ const output = {
 			});
 		}
 		else {
+			console.log(resultObj);
 			res.send(resultObj);
 		}
 	}

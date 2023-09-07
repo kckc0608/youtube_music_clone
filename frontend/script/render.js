@@ -1,6 +1,6 @@
 import {Components} from './components.js';
+import { API_ADDRESS } from './common/environment.js';
 
-const API_ADDRESS = 'http://everdu.ga/api/project/ym_clone/';
 const FETCH_OPTION = {
 	'withCredentials': true,
 };
