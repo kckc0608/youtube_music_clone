@@ -1,0 +1,1 @@
+export const API_ADDRESS = 'http://everdu.com/api/project/ym_clone/';

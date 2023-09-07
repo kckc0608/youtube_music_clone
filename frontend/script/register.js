@@ -1,3 +1,5 @@
+import { API_ADDRESS } from "./common/environment";
+
 const register_form = document.querySelector('form');
 register_form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -17,21 +19,19 @@ register_form.addEventListener("submit", (event) => {
 		ShowErrorMessage("비밀번호 확인이 비밀번호와 다릅니다.");
 		return false;
 	}
-
-    const API_ADDRESS = 'http://everdu.ga/api/project/ym_clone/register';
     const FETCH_OPTION = {
-        method: 'POST',
-		credentials: "same-origin",
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(data),
+      method: 'POST',
+			credentials: "same-origin",
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
     };
 
     fetch(API_ADDRESS, FETCH_OPTION)
     .then((response) => {
-		return response.json();
-	})
+			return response.json();
+		})
     .then((data) => {
 		if (data.success) {
 			window.location.href = './login';
