@@ -1,4 +1,4 @@
-import { API_ADDRESS } from "./common/environment";
+import { API_ADDRESS } from "./common/environment.js";
 
 const register_form = document.querySelector('form');
 register_form.addEventListener("submit", (event) => {
@@ -28,16 +28,21 @@ register_form.addEventListener("submit", (event) => {
 			body: JSON.stringify(data),
     };
 
-    fetch(API_ADDRESS, FETCH_OPTION)
+    fetch(API_ADDRESS+"register", FETCH_OPTION)
     .then((response) => {
 			return response.json();
 		})
     .then((data) => {
 		if (data.success) {
-			window.location.href = './login';
+			window.location.href = './login.html';
 		}
 		else {
-			ShowErrorMessage(data.msg);
+			if (data.msg == "ER_DUP_ENTRY") {
+				ShowErrorMessage("이미 존재하는 아이디 입니다.");
+			} else {
+				ShowErrorMessage(data.msg);
+			}
+		
 		}
 	})
     .catch();

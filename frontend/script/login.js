@@ -1,3 +1,5 @@
+import { API_ADDRESS } from "./common/environment.js";
+
 const login_form = document.querySelector('form');
 login_form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -17,7 +19,6 @@ login_form.addEventListener("submit", (event) => {
 		'pw': pw,
 	};
 
-	const API_ADDRESS = 'http://everdu.ga/api/project/ym_clone/login';
 	const FETCH_OPTION = {
 		method: 'POST',
 		credentials: "same-origin",
@@ -28,7 +29,7 @@ login_form.addEventListener("submit", (event) => {
 	};
 
 	fetch(
-		API_ADDRESS, 
+		API_ADDRESS + "login", 
 		FETCH_OPTION,
 	)
 	.then((response) => {

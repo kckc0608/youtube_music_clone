@@ -133,6 +133,8 @@ const process = {
 				res.send(result_data);
 			}
 			else {
+				result_data.msg = err.code;
+				res.send(result_data);
 				console.log(err);
 			}
 		});

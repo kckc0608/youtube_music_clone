@@ -21,7 +21,20 @@ input {
     border-radius: 4px;
 }
 
+#regist-button {
+    background-color: white;
+    font-weight: bold;
+    padding: 4px;
+    margin: 6px;
+    width: 158px;
+    border-radius: 4px;
+}
+
 #login-button:hover {
+    background-color: lightyellow;
+}
+
+#regist-button:hover {
     background-color: lightyellow;
 }
 
