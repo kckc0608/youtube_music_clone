@@ -41,6 +41,7 @@ login_form.addEventListener("submit", (event) => {
 		}
 		else {
 			ShowErrorMessage(data.msg);
+			console.log(data);
 		}
 	})
 	.catch((err) => {

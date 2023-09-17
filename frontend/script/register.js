@@ -30,7 +30,10 @@ register_form.addEventListener("submit", (event) => {
 
     fetch(API_ADDRESS+"register", FETCH_OPTION)
     .then((response) => {
-			return response.json();
+			if (response.ok) {
+				return response.json();
+			}
+			throw Error("something went wrong");
 		})
     .then((data) => {
 		if (data.success) {
@@ -45,7 +48,9 @@ register_form.addEventListener("submit", (event) => {
 		
 		}
 	})
-    .catch();
+    .catch((error) => {
+		console.log(error);
+	});
 });
 
 const ShowErrorMessage = function(errorMessage) {

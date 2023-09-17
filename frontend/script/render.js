@@ -7,10 +7,14 @@ const FETCH_OPTION = {
 
 fetch(API_ADDRESS, FETCH_OPTION)
 .then((res) => {
-	if (res.ok)
+	if (res.ok) {
 		return res.json();
-	})
+	} else {
+		render_error(res.status);
+	}
+})
 .then((MainPageData) => {
+	console.log(MainPageData);
 	if (MainPageData.status === "success") {
 		render(MainPageData);
 	}
@@ -19,7 +23,8 @@ fetch(API_ADDRESS, FETCH_OPTION)
 	}
 })
 .catch((error) => {
-	render_error(error);
+	console.log(error);
+	render_error("서버와 연결에 실패하였습니다.");
 });
 
 const render = function(MainPageData) {
