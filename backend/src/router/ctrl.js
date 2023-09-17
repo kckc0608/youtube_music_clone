@@ -51,6 +51,7 @@ const output = {
 const process = {
 	login: function(req, res) {
 		console.log(req.body);
+		console.log(req.cookies);
 
 		const reqID = req.body.id;
 		const reqPW = req.body.pw;
@@ -86,7 +87,7 @@ const process = {
 						res.cookie("user", reqID, {
 							maxAge: 1000*60*1,
 							httpOnly: true,
-							domain: 'everdu.ga',
+							domain: 'everdu.com',
 						});
 					}
 					else {
@@ -96,11 +97,16 @@ const process = {
 				else {
 					result_data.msg = "아이디가 존재하지 않습니다";
 				}
-			
 			}
 			else {
 				console.log(err);
-				result_data.msg = err;
+				if (err.code == "ECONNREFUSED") {
+					result_data.msg = "데이터베이스와 연결에 실패하였습니다.";
+				} else if (err.code == "PROTOCOL_ENQUEUE_AFTER_FATAL_ERROR") {
+					result_data.msg = "쿼리 실행 중 치명적 오류가 발생하였습니다.";
+				} else {
+					result_data.msg = err.code;
+				}
 			}
 
 			res.send(result_data);
