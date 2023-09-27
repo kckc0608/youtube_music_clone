@@ -89,6 +89,8 @@ const process = {
 							httpOnly: true,
 							domain: 'everdu.com',
 						});
+
+						console.log("로그인에 성공하였습니다. " + reqID);
 					}
 					else {
 						result_data.msg = "비밀번호가 틀렸습니다.";
