@@ -87,7 +87,8 @@ const process = {
 						res.cookie("user", reqID, {
 							maxAge: 1000*60*1,
 							httpOnly: true,
-							domain: 'everdu.com',
+							//domain: 'everdu.com',
+							//domain: 'everdu.com',
 						});
 
 						console.log("로그인에 성공하였습니다. " + reqID);
